@@ -1,0 +1,10 @@
+services:
+  backup:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    volumes:
+      - /mnt/user:/source
+      - /mnt/user/backup:/dest
+networks: {}
