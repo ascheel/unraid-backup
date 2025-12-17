@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk add --no-cache rsync dcron python3
+RUN apk add --no-cache dcron python3 p7zip
 
 RUN mkdir -p /backup
 ADD backup /backup
