@@ -4,10 +4,12 @@ jobs:
     destdir: /dest/foundryvtt
     retention: 30
     exclude:
-      - .git
+      - __pycache__
       - .DS_Store
-      - .env
-      - .env.local
-      - .env.development.local
-      - .env.test.local
-      - .env.production.local
+  appdata:
+    srcdir: /source/appdata
+    destdir: /dest/appdata
+    retention: 30
+    exclude:
+      - __pycache__
+      - .DS_Store

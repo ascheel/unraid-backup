@@ -5,6 +5,8 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     volumes:
+      - ./backup.cron:/etc/cron.d/backup.cron
+      - ./backup:/backup
       - /mnt/user:/source
       - /mnt/user/backup:/dest
 networks: {}

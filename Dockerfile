@@ -1,12 +1,9 @@
 FROM alpine:latest
 
-RUN apk add --no-cache dcron python3 p7zip
+RUN apk add --no-cache python3 p7zip curl rsync && \
+    curl -L https://github.com/aptible/supercronic/releases/download/v0.2.26/supercronic-linux-amd64 \
+    -o /usr/local/bin/supercronic && \
+    chmod +x /usr/local/bin/supercronic
 
-RUN mkdir -p /backup
-ADD backup /backup
+CMD ["supercronic", "/etc/cron.d/backup.cron"]
 
-COPY rsync.cron /etc/cron.d/rsync.cron
-
-RUN chmod 0644 /etc/cron.d/rsync.cron /backup/backup.py /backup/backup.yml /backup/backup.sh
-
-CMD ["crond", "-f"]
